@@ -1,5 +1,3 @@
-# {class:y}
-
 ### Python
 
 ```python
