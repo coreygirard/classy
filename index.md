@@ -8,29 +8,35 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+```python
+import requests
 
-# Header 1
-## Header 2
-### Header 3
+data = {'lights-off':['Turn my lights off',
+                      'Please turn my lights off',
+                      'Could you turn my lights off',
+                      'Lights off',
+                      'Off'],
+        'lights-on': ['Turn my lights on',
+                      'Please turn my lights on',
+                      'Could you turn my lights on',
+                      'Lights on',
+                      'On']}
 
-- Bulleted
-- List
+url = 'https://
+requests.post(url+'/set',json=data)
 
-1. Numbered
-2. List
+query = 'Lights on, please'
+response = requests.post(url+'/classify',json={'query':query})
+print(response.text)
 
-**Bold** and _Italic_ and `Code` text
+                      
+```
 
-[Link](url) and ![Image](src)
+```python
+{'lights-on':0.95,'lights-off':0.05}
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/crgirard/classy/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
