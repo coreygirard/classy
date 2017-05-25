@@ -5,6 +5,8 @@
 ```python
 import requests
 
+headers = {'Authorization': 'token YOUR-API-KEY'}
+
 data = {'lights-off':['Turn my lights off',
                       'Please turn my lights off',
                       'Could you turn my lights off',
@@ -17,10 +19,10 @@ data = {'lights-off':['Turn my lights off',
                       'On']}
 
 url = 'https://api.classy.services'
-requests.post(url+'/set',json=data)
+requests.post(url+'/set', json=data, headers=headers)
 
 query = 'Lights on, please'
-response = requests.post(url+'/classify',json={'query':query})
+response = requests.post(url+'/classify', json={'query':query}, headers=headers)
 print(response.text)
 
                       
