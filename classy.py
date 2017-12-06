@@ -1,7 +1,7 @@
 import re
 
 class Classifier(object):
-    def __init__(self,i):
+    def __init__(self,i,f=None,threshold=None):
         '''
         >>> c = Classifier({'1':['a b',
         ...                      'a c'],
@@ -30,7 +30,9 @@ class Classifier(object):
         self.prior = {}
         self.word = {}
         self.corpus = {}
-        self.threshold = None
+        self.threshold = threshold
+        if f:
+            self.parse = f
 
         self.add(i)
 

@@ -78,14 +78,13 @@ def parse(text):
     return [i for i in text.split(' ') if i != '']
 ```
 
-If you wish to supply a custom string parsing function, simply replace the `.parse` function of the `Classifier` object:
+If you wish to supply a custom string parsing function, simply provide it as the `f` argument when creating a `Classifier` object:
 
 ```python
 def newParse(t):
     return [i for i in t.split(',') if i != '']
 
-c = classy.Classifier(data)
-c.parse = newParse
+c = classy.Classifier(data,f=newParse)
 ```
 
 
