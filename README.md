@@ -122,5 +122,5 @@ c.classify('diffg')
 
 The `allSubsets` function enumerates all substrings of its input, which does a reasonably decent job
 of spellchecking when paired with Naive Bayes. This usage should be considered a temporary hackjob,
-as there are many, many better ways to do this, for example [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+as there are many, many better ways to do this, for example [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).
 
