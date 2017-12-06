@@ -117,6 +117,8 @@ class Classifier(object):
         >>> r['2'] == max(r.values())
         True
         >>> c.threshold = 0.8
+        >>> c.classify('a a a')
+        '1'
         >>> c.classify('x y z') == None
         True
         '''
@@ -140,24 +142,5 @@ class Classifier(object):
                 if v >= self.threshold:
                     return k
             return None
-
-
-
-data = {'lights':['Could you turn my lights off?',
-                  'Turn my lights off',
-                  'Are my lights off?',
-                  'All lights off, please',
-                  'Turn some lights on',
-                  'Which bulbs are on?'],
-        'alarm': ['Set an alarm for tomorrow at 6:00',
-                  'What time is my alarm?',
-                  'When will I wake up tomorrow?',
-                  'What time is wakeup tomorrow?']}
-
-c = Classifier(data)
-
-print(c.classify('Which of my lights are off?'))
-
-
 
 
