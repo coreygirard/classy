@@ -45,6 +45,8 @@ c.classify('Which of my lights are off?')
 ```python
 {'lights': 0.9981515711645101, 'alarm': 0.0018484288354898338}
 ```
+---
+---
 
 ### Advanced
 
@@ -87,7 +89,38 @@ def newParse(t):
 c = classy.Classifier(data,f=newParse)
 ```
 
+### Tricks
 
+Want a bare-bones spellchecker over a (very) limited set of inputs?
 
+```python
+def allSubsets(text):
+    temp = []
+    for a in range(len(text)):
+        for b in range(a,len(text)):
+            temp.append(text[a:b+1])
+    return temp
 
+data = {'push':['push'],
+        'commit':['commit'],
+        'pull':['pull'],
+        'diff':['diff']}
+
+c = Classifier(data,f=allSubsets,threshold=0.6)
+
+c.classify('commot')
+c.classify('cpmmot')
+c.classify('pulll')
+c.classify('diffg')
+```
+```
+'commit'
+'commit'
+'pull'
+'diff'
+```
+
+The `allSubsets` function enumerates all substrings of its input, which does a reasonably decent job
+of spellchecking when paired with Naive Bayes. This usage should be considered a temporary hackjob,
+as there are many, many better ways to do this, for example [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
 

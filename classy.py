@@ -146,3 +146,44 @@ class Classifier(object):
             return None
 
 
+
+
+
+from pprint import pprint
+
+def newParse(text):
+    temp = []
+    for a in range(len(text)):
+        for b in range(a,len(text)):
+            temp.append(text[a:b+1])
+    return temp
+
+
+data = {'push':['push'],
+        'commit':['commit'],
+        'pull':['pull'],
+        'diff':['diff']}
+
+c = Classifier(data,f=newParse,threshold=0.6)
+
+pprint(c.classify('commot'))
+pprint(c.classify('cpmmot'))
+pprint(c.classify('pulll'))
+pprint(c.classify('diffg'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
