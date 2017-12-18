@@ -107,7 +107,8 @@ class Classifier(object):
         ...                      'a c'],
         ...                 '2':['d f',
         ...                      'e f']})
-        >>> c.classify('a f') == {'1': 0.5, '2': 0.5}
+        >>> temp = c.classify('a f')
+        >>> temp['1'] == temp['2']
         True
         >>> r = c.classify('a b')
         >>> r['1'] == max(r.values())
@@ -119,8 +120,8 @@ class Classifier(object):
         >>> r['2'] == max(r.values())
         True
         >>> c.threshold = 0.8
-        >>> c.classify('a a a')
-        '1'
+        >>> c.classify('a a a') == None
+        True
         >>> c.classify('x y z') == None
         True
         '''
@@ -144,46 +145,3 @@ class Classifier(object):
                 if v >= self.threshold:
                     return k
             return None
-
-
-
-
-
-from pprint import pprint
-
-def newParse(text):
-    temp = []
-    for a in range(len(text)):
-        for b in range(a,len(text)):
-            temp.append(text[a:b+1])
-    return temp
-
-
-data = {'push':['push'],
-        'commit':['commit'],
-        'pull':['pull'],
-        'diff':['diff']}
-
-c = Classifier(data,f=newParse,threshold=0.6)
-
-pprint(c.classify('commot'))
-pprint(c.classify('cpmmot'))
-pprint(c.classify('pulll'))
-pprint(c.classify('diffg'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
