@@ -134,7 +134,7 @@ class Classifier(object):
             for k,v in c.items():
                 p[k] *= v
 
-        total = sum(p.values())
+        total = sum(p.values())+1
         p = {k:v/total for k,v in p.items()}
 
         if self.threshold == None:
