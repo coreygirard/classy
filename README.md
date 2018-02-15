@@ -1,7 +1,7 @@
 # classy
 
-[![Build Status](https://travis-ci.org/crgirard/classy.svg?branch=master)](https://travis-ci.org/crgirard/classy) <br>
-[![Codecov](https://img.shields.io/codecov/c/github/crgirard/classy.svg)](https://codecov.io/gh/crgirard/classy/)
+[![Build Status](https://travis-ci.org/coreygirard/classy.svg?branch=master)](https://travis-ci.org/coreygirard/classy) <br>
+[![Codecov](https://img.shields.io/codecov/c/github/coreygirard/classy.svg)](https://codecov.io/gh/coreygirard/classy/)
 
 ### What
 
