@@ -3,7 +3,7 @@ import re
 
 class Classifier(object):
     def __init__(self, i, f=None, threshold=None):
-        '''
+        """
         >>> c = Classifier({'1': ['a b',
         ...                       'a c'],
         ...                 '2': ['d f',
@@ -26,7 +26,7 @@ class Classifier(object):
         ...              'e': 1,
         ...              'f': 2}
         True
-        '''
+        """
 
         self.prior = {}
         self.word = {}
@@ -45,7 +45,7 @@ class Classifier(object):
         self.total = sum(self.prior.values())
 
     def add_line(self, k, e):
-        '''
+        """
         >>> c = Classifier({})
 
         >>> c.prior == {}
@@ -68,31 +68,31 @@ class Classifier(object):
         >>> c.corpus == {'a': 1,
         ...              'b': 2}
         True
-        '''
+        """
 
-        self.prior[k] = self.prior.get(k, 0)+1
+        self.prior[k] = self.prior.get(k, 0) + 1
         if k not in self.word.keys():
             self.word[k] = {}
 
         for i in self.parse(e):
-            self.word[k][i] = self.word[k].get(i, 0)+1
-            self.corpus[i] = self.corpus.get(i, 0)+1
+            self.word[k][i] = self.word[k].get(i, 0) + 1
+            self.corpus[i] = self.corpus.get(i, 0) + 1
 
-    def parse(self, text):  #pylint: disable=method-hidden
-        '''
+    def parse(self, text):  # pylint: disable=method-hidden
+        """
         >>> Classifier({}).parse('a b c')
         ['a', 'b', 'c']
-        '''
+        """
 
         text = text.lower()
-        text = re.sub(r'[^a-z0-9 ]', r'', text)
-        return [i for i in text.split(' ') if i != '']
+        text = re.sub(r"[^a-z0-9 ]", r"", text)
+        return [i for i in text.split(" ") if i != ""]
 
     def get_prior(self):
-        return {k: v/self.total for k, v in self.prior.items()}
+        return {k: v / self.total for k, v in self.prior.items()}
 
     def classify_word(self, w):
-        '''
+        """
         >>> c = Classifier({'1': ['a b',
         ...                       'a c'],
         ...                 '2': ['d f',
@@ -103,13 +103,13 @@ class Classifier(object):
         True
         >>> c.classify_word('f') == {'1': 0.25, '2': 0.75}
         True
-        '''
+        """
 
-        temp = {k: (v.get(w, 0)+1) for k, v in self.word.items()}
-        return {k: v/sum(temp.values()) for k, v in temp.items()}
+        temp = {k: (v.get(w, 0) + 1) for k, v in self.word.items()}
+        return {k: v / sum(temp.values()) for k, v in temp.items()}
 
     def classify(self, i):
-        '''
+        """
         >>> c = Classifier({'1': ['a b',
         ...                      'a c'],
         ...                 '2': ['d f',
@@ -136,7 +136,7 @@ class Classifier(object):
 
         >>> c.classify('x y z') == None
         True
-        '''
+        """
 
         i = self.parse(i)
 
@@ -147,8 +147,8 @@ class Classifier(object):
             for k, v in c.items():
                 p[k] *= v
 
-        total = sum(p.values())+1
-        p = {k: v/total for k, v in p.items()}
+        total = sum(p.values()) + 1
+        p = {k: v / total for k, v in p.items()}
 
         if self.threshold is None:
             return p

@@ -1,0 +1,9 @@
+[
+  "src/main.py::src.main.Classifier.__init__",
+  "src/main.py::src.main.Classifier.add_line",
+  "src/main.py::src.main.Classifier.classify",
+  "src/main.py::src.main.Classifier.classify_word",
+  "src/main.py::src.main.Classifier.parse",
+  "tests/test_main.py::test_basic_classify",
+  "tests/test_main.py::test_custom_parse"
+]

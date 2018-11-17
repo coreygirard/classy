@@ -1,22 +1,21 @@
 # classy
 
 [![Build Status](https://travis-ci.org/coreygirard/classy.svg?branch=master)](https://travis-ci.org/coreygirard/classy) <br>
-[![Codecov](https://img.shields.io/codecov/c/github/coreygirard/classy.svg)](https://codecov.io/gh/coreygirard/classy/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 ### What
 
 Easy lightweight text classification via Naive Bayes. Give it a small set
 of example data, and it will classify similar inputs with blazing speed and pretty good accuracy.
 
-
 ### Why
 
 Making a basic chatbot? Want to do basic auto-suggestion of misspelled commands? Don't want to bust out [TensorFlow](https://github.com/tensorflow/tensorflow) or [scikit-learn](https://github.com/scikit-learn/scikit-learn)? Classy's got you covered.
 
-
 ### How
 
 Classify some data (probably by hand) into a `dict`:
+
 ```python
 data = {'lights':['Could you turn my lights off?',
                   'Turn my lights off',
@@ -42,10 +41,13 @@ To classify text, simply use `.classify`:
 ```python
 c.classify('Which of my lights are off?')
 ```
+
 ```python
 {'lights': 0.9981515711645101, 'alarm': 0.0018484288354898338}
 ```
+
 ---
+
 ---
 
 ### Advanced
@@ -61,6 +63,7 @@ c.threshold = 0.9
 c.classify('Which of my lights are off?')
 c.classify('Some words we've never seen before')
 ```
+
 ```python
 'lights'
 None
@@ -113,6 +116,7 @@ c.classify('cpmmot')
 c.classify('pulll')
 c.classify('diffg')
 ```
+
 ```
 'commit'
 'commit'
@@ -123,4 +127,3 @@ c.classify('diffg')
 The `allSubsets` function enumerates all substrings of its input, which does a reasonably decent job
 of spellchecking when paired with Naive Bayes. This usage should be considered a ~~~cool trick~~~ temporary hackjob,
 as there are many, many better ways to do this, for example [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).
-
